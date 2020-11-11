@@ -1,8 +1,8 @@
-# memes-saver
+# meme-saver
 
 app for managing memes
 
-## Deveopment
+## Development
 
 ### Back-end
 
