@@ -15,7 +15,7 @@ node server.js
 
 ### Front-end client
 
-start server with
+start react app with
 
 ```shell
 cd client
