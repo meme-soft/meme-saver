@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const memeSchema = new mongoose.Schema({
   name:  String,
@@ -7,4 +7,4 @@ const memeSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Meme', memeSchema);
+export default mongoose.model('Meme', memeSchema);
