@@ -3,14 +3,14 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const App: React.FC = () => {
-  const [message, setMessage] = useState<String>('')
+  const [message, setMessage] = useState<string>('')
   useEffect(() => {
     const fetchMessage = async () => {
       try {
-        const response = await axios.get<String>("http://localhost:5000")
+        const response = await axios.get<string>("http://localhost:5000")
         setMessage(response.data)
       }  catch(e)  {
-        setMessage(e)
+        setMessage("server response error")
       }
     }
     fetchMessage()
