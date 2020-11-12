@@ -6,6 +6,10 @@ import morgan from 'morgan';
 import config from './config';
 import uploadsRouter from './uploads';
 import logger from './logger';
+import allMemesRouter from './all-meme-view';
+
+import meme from './db/meme'
+
 
 const app: express.Application = express()
 
@@ -23,7 +27,8 @@ db.once('open', () => {
 app.use(cors())
 app.use(morgan('tiny')) // logging incoming request and response
 
-app.use('/api/v1/meme/uploads', uploadsRouter)
+app.use('/api/v1/memes/uploads', uploadsRouter)
+app.use('/api/v1/memes/', allMemesRouter)
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello World!')
