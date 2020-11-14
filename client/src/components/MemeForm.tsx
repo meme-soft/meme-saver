@@ -52,11 +52,11 @@ const MemeForm = () => {
             <Form.Group>
                 <Form.Label>Upload Meme</Form.Label>
                 <Form.File
-                onChange={onFileChange}
-                required
-                id="custom-file"
-                label={filename}
-                custom
+                    onChange={onFileChange}
+                    required
+                    id="custom-file"
+                    label={filename}
+                    custom
                 />
             </Form.Group>
             <Form.Group>

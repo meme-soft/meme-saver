@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({storage}).single('file')
 
-const makeUplaodUrl = (filename: string): string => {
+const makeUploadUrl = (filename: string): string => {
     const baseUrl: string = `${config.host}:${config.port}`
     return `${baseUrl}/api/v1/meme/uploads/${filename}`
 }
@@ -27,7 +27,7 @@ memes.post('/', upload, async (req: Request, res: Response, next: RequestHandler
             name: req.body.name,
             description: req.body.description,
             tags: req.body.tags,
-            url: makeUplaodUrl(req.file.filename)
+            url: makeUploadUrl(req.file.filename)
         })
         res.sendStatus(201).send(meme)
     } catch(e) {
