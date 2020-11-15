@@ -1,0 +1,17 @@
+name: server CI
+on: [push]
+
+jobs:
+  js-linter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Set up NodeJS
+        uses: actions/setup-node@v1
+      - name: Install deps
+        working-directory: server
+        run: npm install
+      - name: Run linter
+        working-directory: server
+        run: npm run lint
