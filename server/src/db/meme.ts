@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const memeSchema = new mongoose.Schema({
-  name:  String,
+  name: String,
   description: String,
   tags: [String],
   url: String,
