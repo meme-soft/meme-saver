@@ -12,11 +12,11 @@ app for managing memes
 
 ### Environment
 
-setup local development envrionment
+setup local development environment
 
 ### Back-end
 
-install dependecies
+install dependencies
 
 ```shell
 cd server
@@ -32,7 +32,7 @@ npm start
 
 ### Front-end client
 
-install dependecies
+install dependencies
 
 ```shell
 cd client
