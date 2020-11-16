@@ -29,7 +29,7 @@ memes.post('/', upload, async (req: Request, res: Response) => {
       tags: req.body.tags,
       url: makeUploadUrl(req.file.filename),
     });
-    res.sendStatus(201).send(meme);
+    res.status(201).send(meme);
   } catch (e) {
     logger.error(e);
     res.sendStatus(500);
