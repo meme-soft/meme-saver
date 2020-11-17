@@ -7,6 +7,7 @@ import memes from './memes';
 import config from './config';
 import uploadsRouter from './uploads';
 import logger from './logger';
+import setup from './setup';
 
 const app: express.Application = express();
 
@@ -30,6 +31,8 @@ app.get('/health', (req: Request, res: Response) => {
   res.send('alive');
 });
 
-app.listen(config.port, async () => {
-  logger.info(`listening at http://localhost:${config.port}`);
+setup(() => {
+  app.listen(config.port, async () => {
+    logger.info(`listening at http://localhost:${config.port}`);
+  });
 });
