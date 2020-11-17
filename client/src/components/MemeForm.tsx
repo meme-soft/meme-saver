@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 const MemeForm = () => {
-  const [file, setFile] = useState<File| null>();
+  const [file, setFile] = useState<File | null>();
   const [filename, setFilename] = useState<string>('Choose File');
   const [name, setName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [tags, setTags] = useState<string>('');
+  const [preview, enablePreview] = useState<boolean>(false);
+
+  useEffect(() => {
+    enablePreview(Boolean(file));
+  }, [file]);
 
   const clearForm = (): void => {
     setName('');
@@ -42,9 +47,16 @@ const MemeForm = () => {
 
   return (
     <Form onSubmit={onSubmit}>
+      {preview
+      && (
+      <div className="card mb-4 shadow-sm">
+        <img src={URL.createObjectURL(file)} className="img-thumbnail" alt="..." />
+      </div>
+      )}
       <Form.Group>
         <Form.Label>Upload Meme</Form.Label>
         <Form.File
+          accept="image/*"
           onChange={onFileChange}
           required
           id="custom-file"
