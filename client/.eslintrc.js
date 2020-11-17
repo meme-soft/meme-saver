@@ -5,4 +5,7 @@ module.exports = {
     project: './tsconfig.json',
     createDefaultProgram: true,
   },
+  rules: {
+    'max-len': ['error', 120],
+  },
 };
