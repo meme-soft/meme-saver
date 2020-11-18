@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import imageCompression from 'browser-image-compression';
 
 const MemeForm = () => {
   const [file, setFile] = useState<File | null>();
@@ -19,15 +20,17 @@ const MemeForm = () => {
     setDescription('');
     setTags('');
     setFilename('Choose File');
+    enablePreview(false);
     setFile(null);
   };
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     clearForm();
+    const compressedFile = await imageCompression(file as File, { maxSizeMB: 1 });
     const formData: FormData = new FormData();
     if (file) {
-      formData.append('file', file);
+      formData.append('file', compressedFile);
       formData.append('name', name);
       formData.append('description', description);
       formData.append('tags', tags);
