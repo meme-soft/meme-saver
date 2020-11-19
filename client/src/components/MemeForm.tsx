@@ -33,7 +33,11 @@ const MemeForm = () => {
       formData.append('file', compressedFile);
       formData.append('name', name);
       formData.append('description', description);
-      formData.append('tags', tags);
+      tags.split(',')
+        .map((tag: string) => tag.trim())
+        .forEach((tag) => {
+          formData.append('tags', tag);
+        });
       await axios.post('http://localhost:5000/api/v1/meme/', formData);
     }
   };
