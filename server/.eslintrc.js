@@ -18,17 +18,19 @@ module.exports = {
   ],
   rules: {
     'import/extensions': [
-       'error',
-       'ignorePackages',
-       {
-         'js': 'never',
-         'jsx': 'never',
-         'ts': 'never',
-         'tsx': 'never'
-       }
-    ]
- },
-settings: {
+        'error',
+        'ignorePackages',
+        {
+          'js': 'never',
+          'jsx': 'never',
+          'ts': 'never',
+          'tsx': 'never'
+        }
+    ],
+    'max-len': ['error', 120],
+    'no-unused-vars': ['error', { 'argsIgnorePattern': 'next' }]
+  },
+  settings: {
     'import/resolver': {
       typescript: {}
     }
