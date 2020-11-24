@@ -36,7 +36,17 @@ const MemeList: React.FC = () => {
     <Container>
       <Row>
         {
-          error ? 'response error' : memes.map((meme) => <MemeLI tags={meme.tags} url={meme.url} name={meme.name} onClick={clickHandler} key={meme._id} id={meme._id} />)
+          error ? 'response error'
+            : memes.map((meme) => (
+              <MemeLI
+                tags={meme.tags}
+                url={meme.url}
+                name={meme.name}
+                onClick={clickHandler}
+                key={meme._id}
+                id={meme._id}
+              />
+            ))
         }
       </Row>
     </Container>
