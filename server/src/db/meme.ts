@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { IMeme } from '../types/meme.interface';
 
 const memeSchema = new mongoose.Schema({
   name: String,
@@ -8,4 +9,11 @@ const memeSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
 });
 
-export default mongoose.model('Meme', memeSchema);
+memeSchema.methods.transform = function transform() {
+  const obj = this.toObject();
+  obj.id = obj._id;
+  delete obj._id;
+  return obj;
+};
+
+export default mongoose.model<IMeme>('Meme', memeSchema);

@@ -17,7 +17,7 @@ const ServerHealthIndicator = () => {
     fetchMessage();
   });
   return (
-    <div style={{ marginBottom: 50, marginTop: 10 }}>
+    <div>
       server:
       <Badge variant={error ? 'danger' : 'success'}>
         {error ? 'server down' : message }

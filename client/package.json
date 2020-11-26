@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/react-router-dom": "^5.1.6",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "browser-image-compression": "^1.0.13",
@@ -19,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=1 --fix"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=1"
   },
   "browserslist": {
     "production": [
@@ -34,6 +33,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.1.6",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

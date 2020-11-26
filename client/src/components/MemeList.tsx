@@ -3,16 +3,8 @@ import { Container, Row } from 'react-bootstrap';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import MemeLI from './MemeLI';
-/* eslint no-underscore-dangle: 0 */
+import IMeme from '../types/meme.interface';
 
-interface IMeme{
-  _id: string,
-  name: string,
-  description: string,
-  tags: string[],
-  url: string,
-  date: Date,
-}
 type MemeArray = Array<IMeme>;
 const MemeList: React.FC = () => {
   const history = useHistory();
@@ -21,7 +13,7 @@ const MemeList: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/memes/');
+        const response = await axios.get('http://localhost:5000/api/v1/meme/list');
         setMemes(response.data);
       } catch (e) {
         setError(true);
@@ -39,12 +31,9 @@ const MemeList: React.FC = () => {
           error ? 'response error'
             : memes.map((meme) => (
               <MemeLI
-                tags={meme.tags}
-                url={meme.url}
-                name={meme.name}
+                meme={meme}
                 onClick={clickHandler}
-                key={meme._id}
-                id={meme._id}
+                key={meme.id}
               />
             ))
         }

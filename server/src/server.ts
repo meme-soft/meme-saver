@@ -17,9 +17,9 @@ app.use(cors());
 app.use(morgan('tiny')); // logging incoming request and response
 
 app.use('/api/v1/meme/uploads', uploadsRouter);
-app.use('/api/v1/meme/', memes);
-app.use('/api/v1/memes/', allMemesRouter);
-app.use('/api/v1/meme/:id', oneMemeRouter);
+app.use('/api/v1/meme/', memes, allMemesRouter, oneMemeRouter);
+//  app.use('/api/v1/memes/', allMemesRouter);
+//  app.use('/api/v1/meme/:id', oneMemeRouter);
 
 app.get('/health', (req: Request, res: Response) => {
   res.send('alive');

@@ -1,12 +1,12 @@
 import express, { Request, Response } from 'express';
-import meme from './db/meme';
+import Meme from './db/meme';
 
 const allMemesRouter = express.Router();
 
-allMemesRouter.get('/', (req: Request, res: Response) => {
-  meme.find()
+allMemesRouter.get('/list', (req: Request, res: Response) => {
+  Meme.find()
     .then((memes) => {
-      res.json(memes);
+      res.json(memes.map((meme) => meme.transform()));
     })
     .catch((err) => {
       res.json({

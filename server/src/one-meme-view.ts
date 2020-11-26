@@ -4,12 +4,12 @@ import logger from './logger';
 
 const oneMemeRouter = express.Router({ mergeParams: true });
 
-oneMemeRouter.get('/', (req: Request, res: Response) => {
+oneMemeRouter.get('/:id', (req: Request, res: Response) => {
   const { id } = req.params;
   logger.info(id);
   Meme.findById(id)
     .then((meme) => {
-      res.json(meme);
+      res.json(meme?.transform());
     })
     .catch((err) => {
       res.json({

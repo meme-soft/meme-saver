@@ -5,7 +5,6 @@ import MemeForm from './components/MemeForm';
 import MemeList from './components/MemeList';
 import Meme from './components/Meme';
 import ServerHealthIndicator from './components/ServerHealthIndicator';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App: React.FC = () => (
   <>
@@ -19,6 +18,9 @@ const App: React.FC = () => (
             <Nav.Link href="/upload">upload</Nav.Link>
             <Nav.Link href="/memes">list</Nav.Link>
           </Nav>
+          <Nav>
+            <ServerHealthIndicator />
+          </Nav>
         </Navbar>
       </Container>
       <Switch>
@@ -26,9 +28,6 @@ const App: React.FC = () => (
         <Route exact path="/memes" component={MemeList} />
         <Route exact path="/meme/:id" component={Meme} />
       </Switch>
-      <Container style={{ maxWidth: 500 }}>
-        <ServerHealthIndicator />
-      </Container>
     </Router>
   </>
 );

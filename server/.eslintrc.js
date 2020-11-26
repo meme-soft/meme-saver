@@ -28,7 +28,8 @@ module.exports = {
         }
     ],
     'max-len': ['error', 120],
-    'no-unused-vars': ['error', { 'argsIgnorePattern': 'next' }]
+    'no-unused-vars': ['error', { 'argsIgnorePattern': 'next' }],
+    'no-underscore-dangle': ['error', { allow: ['_id'] }],
   },
   settings: {
     'import/resolver': {

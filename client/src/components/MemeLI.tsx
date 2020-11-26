@@ -1,24 +1,18 @@
 import React from 'react';
 import Image from 'react-bootstrap/Image';
-//  import ListGroup from 'react-bootstrap/ListGroup';
 import { Col } from 'react-bootstrap';
+import IMeme from '../types/meme.interface';
 
-interface IMemeProp{
-  id: string,
-  name: string,
-  //    description: string,
-  tags: string[],
-  url: string,
-  //    date: Date,
-  onClick(i: string):void
-}
+type MemeLIProps = {meme: IMeme, onClick(id: string):void};
 
-const MemeLI: React.FC<IMemeProp> = (props: IMemeProp) => {
+const MemeLI: React.FC<MemeLIProps> = (props: MemeLIProps) => {
   const {
-    id,
-    url,
-    tags,
-    name,
+    meme: {
+      id,
+      url,
+      tags,
+      name,
+    },
     onClick,
   } = props;
   return (

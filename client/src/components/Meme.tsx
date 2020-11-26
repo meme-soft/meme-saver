@@ -2,27 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Image from 'react-bootstrap/Image';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import IMeme from '../types/meme.interface';
 
-interface IMemeProp{
-  id: string,
-  name: string,
-  description: string,
-  tags: string[],
-  url: string,
-  //    date: Date,
-
-}
-
-interface ParamTypes {
-  id: string
-}
+type ParamType = {id: string};
 
 const Meme: React.FC = () => {
-  const [meme, setMeme] = useState<IMemeProp>({
-    id: '', name: '', description: '', tags: [''], url: '',
+  const [meme, setMeme] = useState<IMeme>({
+    id: '', name: '', description: '', tags: [''], url: '', date: new Date(),
   });
   const [error, setError] = useState<boolean>(false);
-  const { id } = useParams<ParamTypes>();
+  const { id } = useParams<ParamType>();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,11 +30,12 @@ const Meme: React.FC = () => {
           : (
             <div>
               <Image src={meme.url} thumbnail />
-              <div>{meme.name}</div>
-              <div>{meme.description}</div>
+              <div>{ meme.name }</div>
+              <div>{ meme.description }</div>
               {
-                meme.tags.map((tag, i) => <div key={i.toString()}>{tag}</div>)
+                meme.tags.map((tag, i) => <div key={i.toString()}>{ tag }</div>)
               }
+              <div>{ meme.date.toString() }</div>
             </div>
           )
       }
