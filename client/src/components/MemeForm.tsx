@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import axios from 'axios';
 import imageCompression from 'browser-image-compression';
+import TagsInput from 'react-tagsinput';
+import './tags.css';
 
 const MemeForm = () => {
   const [file, setFile] = useState<File | null>();
   const [filename, setFilename] = useState<string>('Choose File');
   const [name, setName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [tags, setTags] = useState<string>('');
+  const [tags, setTags] = useState<string[]>([]);
   const [preview, enablePreview] = useState<boolean>(false);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const MemeForm = () => {
   const clearForm = (): void => {
     setName('');
     setDescription('');
-    setTags('');
+    setTags([]);
     setFilename('Choose File');
     enablePreview(false);
     setFile(null);
@@ -33,8 +35,7 @@ const MemeForm = () => {
       formData.append('file', compressedFile);
       formData.append('name', name);
       formData.append('description', description);
-      tags.split(',')
-        .map((tag: string) => tag.trim())
+      tags.map((tag: string) => tag.trim())
         .forEach((tag) => {
           formData.append('tags', tag);
         });
@@ -94,12 +95,14 @@ const MemeForm = () => {
         </Form.Group>
         <Form.Group>
           <Form.Label>Tags</Form.Label>
-          <Form.Control
+          <TagsInput
+            inputProps={{
+              className: 'form-control',
+              placeholder: 'Add a tag',
+            }}
             value={tags}
-            required
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTags(e.target.value)}
-            type="text"
-            placeholder="Enter tags"
+            onChange={setTags}
+            onlyUnique
           />
         </Form.Group>
         <Button variant="primary" type="submit">
