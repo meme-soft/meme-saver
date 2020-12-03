@@ -4,6 +4,8 @@ import cors from 'cors';
 import morgan from 'morgan';
 
 import memes from './memes';
+import allMemesRouter from './all-memes-vieiw';
+import oneMemeRouter from './one-meme-view';
 import config from './config';
 import uploadsRouter from './uploads';
 import logger from './logger';
@@ -15,7 +17,7 @@ app.use(cors());
 app.use(morgan('tiny')); // logging incoming request and response
 
 app.use('/api/v1/meme/uploads', uploadsRouter);
-app.use('/api/v1/meme/', memes);
+app.use('/api/v1/meme/', memes, allMemesRouter, oneMemeRouter);
 
 app.get('/health', (req: Request, res: Response) => {
   res.send('alive');

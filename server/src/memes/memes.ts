@@ -16,6 +16,7 @@ memes.post('/', memesPostMiddleware, async (req: Request, res: Response) => {
       description: req.body.description,
       tags: req.body.tags,
       url: utils.makeUploadUrl(req.file.filename),
+      date: new Date(),
     });
     res.status(201).send(meme);
   } catch (e) {
