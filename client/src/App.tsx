@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MemeForm from './components/MemeForm';
 import MemeList from './components/MemeList';
@@ -9,7 +9,7 @@ import ServerHealthIndicator from './components/ServerHealthIndicator';
 const App: React.FC = () => (
   <>
     <Router>
-      <Container>
+      <>
         <Navbar expand="lg" variant="light" bg="light">
           <Navbar.Brand>
             Meme Saver
@@ -22,7 +22,7 @@ const App: React.FC = () => (
             <ServerHealthIndicator />
           </Nav>
         </Navbar>
-      </Container>
+      </>
       <Switch>
         <Route exact path="/upload" component={MemeForm} />
         <Route exact path="/memes" component={MemeList} />
